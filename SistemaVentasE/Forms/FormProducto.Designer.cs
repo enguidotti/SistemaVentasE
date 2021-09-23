@@ -47,6 +47,7 @@ namespace SistemaVentasE.Forms
             this.dgvProducto = new System.Windows.Forms.DataGridView();
             this.cbMarca = new System.Windows.Forms.ComboBox();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +61,7 @@ namespace SistemaVentasE.Forms
             this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -109,6 +111,7 @@ namespace SistemaVentasE.Forms
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(283, 26);
             this.txtCodigo.TabIndex = 14;
+            this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
             // 
             // label4
             // 
@@ -200,6 +203,7 @@ namespace SistemaVentasE.Forms
             this.dgvProducto.Name = "dgvProducto";
             this.dgvProducto.Size = new System.Drawing.Size(538, 328);
             this.dgvProducto.TabIndex = 23;
+            this.dgvProducto.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvProducto_MouseClick);
             // 
             // cbMarca
             // 
@@ -220,11 +224,23 @@ namespace SistemaVentasE.Forms
             this.cbCategoria.Size = new System.Drawing.Size(283, 28);
             this.cbCategoria.TabIndex = 25;
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(479, 202);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(90, 34);
+            this.btnLimpiar.TabIndex = 26;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // FormProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1206, 450);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.cbCategoria);
             this.Controls.Add(this.cbMarca);
             this.Controls.Add(this.dgvProducto);
@@ -271,5 +287,6 @@ namespace SistemaVentasE.Forms
         private System.Windows.Forms.DataGridView dgvProducto;
         private System.Windows.Forms.ComboBox cbMarca;
         private System.Windows.Forms.ComboBox cbCategoria;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

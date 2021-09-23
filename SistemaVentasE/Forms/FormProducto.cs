@@ -15,11 +15,13 @@ namespace SistemaVentasE.Forms
     public partial class FormProducto : Form
     {
         private ventasdbEntities db = new ventasdbEntities();
+        private int idProducto = 0;
         public FormProducto()
         {
             InitializeComponent();
             cargarMarcas();
             cargarCategorias();
+            CargarProductos();
         }
 
         //método para cargar combobox marca
@@ -74,6 +76,7 @@ namespace SistemaVentasE.Forms
             //retorna la variable error 
             return error;
         }
+        //método para guardar nuevo producto
         private void IngresarProducto()
         {
             Producto p = new Producto();//instancia de la clase producto y se crea el objeto p
@@ -90,6 +93,75 @@ namespace SistemaVentasE.Forms
 
             MessageBox.Show("El producto se ha guardado con éxito","Guardar");
         }
+        //método para modificar un producto existente
+        private void ModificarProducto()
+        {
+            //Find sirve para buscar en la tabla por su primary key
+            Producto p = db.Producto.Find(idProducto);
+            p.id_marca = int.Parse(cbMarca.SelectedValue.ToString());//selected value necesita ser pasado a int
+            p.id_categoria = int.Parse(cbCategoria.SelectedValue.ToString());
+            p.codigo = int.Parse(txtCodigo.Text);
+            p.nombre = txtNombre.Text.Trim();
+            p.precio_compra = int.Parse(txtCompra.Text);
+            p.precio_venta = int.Parse(txtVenta.Text);
+            p.descripcion = txtDescripcion.Text;
+
+            db.SaveChanges();
+        }
+        //método para cargar lista de productos
+        private void CargarProductos()
+        {
+            //consulta que trae todos los productos 
+            var listaProductos = (from p in db.Producto
+                                  select new
+                                  {
+                                      p.id_producto,
+                                      p.id_marca,
+                                      p.id_categoria,
+                                      Marca = p.Marca.nombre,
+                                      Categoría = p.Categoria.nombre,
+                                      Código = p.codigo,
+                                      Nombre = p.nombre,
+                                      Compra = p.precio_compra,
+                                      Venta = p.precio_venta,
+                                      Descripción = p.descripcion
+                                  }).ToList();
+            //se agrega la lista de productos a la grilla
+            dgvProducto.DataSource = listaProductos;
+            //no muestra el id_producto ya que esta en la posición 0
+            dgvProducto.Columns[0].Visible = false;
+            dgvProducto.Columns[1].Visible = false;
+            dgvProducto.Columns[2].Visible = false;
+
+        }
+        private void Limpiar()
+        {
+            idProducto = 0;
+            cbMarca.SelectedIndex = -1;
+            cbCategoria.SelectedIndex = -1;
+            txtCodigo.Text = "";
+            txtNombre.Text = "";
+            txtCompra.Text = "";
+            txtVenta.Text = "";
+            txtDescripcion.Text = "";
+
+            dgvProducto.ClearSelection();
+            btnEliminar.Enabled = false;
+
+        }
+        //método booleano que retorna true o false según existencia dedl código del producto
+        private bool ExisteCodigo(int codigo)
+        {
+            bool existe = false;
+            //select * from Producto where codigo = txtCodigo
+            Producto producto = db.Producto.FirstOrDefault(p => p.codigo == codigo);
+            if(producto != null)
+            {
+                existe = true;
+            }
+
+            return existe;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string error = Validar();
@@ -99,7 +171,67 @@ namespace SistemaVentasE.Forms
             } else
             {
                 //guardar y modificar
-                IngresarProducto();
+                if (idProducto == 0)
+                {
+                    IngresarProducto();
+                }
+                else
+                {
+                    ModificarProducto();
+                }
+                CargarProductos();
+                Limpiar();
+            }
+        }
+
+        private void dgvProducto_MouseClick(object sender, MouseEventArgs e)
+        {
+            idProducto = int.Parse(dgvProducto.CurrentRow.Cells[0].Value.ToString());
+            cbMarca.SelectedValue = int.Parse(dgvProducto.CurrentRow.Cells[1].Value.ToString());
+            cbCategoria.SelectedValue = int.Parse(dgvProducto.CurrentRow.Cells[2].Value.ToString());
+            txtCodigo.Text = dgvProducto.CurrentRow.Cells[5].Value.ToString();
+            txtNombre.Text = dgvProducto.CurrentRow.Cells[6].Value.ToString();
+            txtCompra.Text = dgvProducto.CurrentRow.Cells[7].Value.ToString();
+            txtVenta.Text = dgvProducto.CurrentRow.Cells[8].Value.ToString();
+            txtDescripcion.Text = dgvProducto.CurrentRow.Cells[9].Value.ToString();
+
+            btnEliminar.Enabled = true;
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(idProducto > 0)
+            {
+                //Alerta pregunta si desea eliminar o no
+                var resultado = MessageBox.Show("¿Desea eliminar el producto " + txtNombre.Text + "?","Eliminar",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+                //verifica si la opción presionada es Si
+                if(resultado == DialogResult.Yes)
+                {
+                    Producto p = db.Producto.Find(idProducto);
+                    db.Producto.Remove(p);
+                    db.SaveChanges();
+                    CargarProductos();
+                    Limpiar();
+                } 
+            }
+        }
+
+        private void txtCodigo_Leave(object sender, EventArgs e)
+        {
+            //verifica si hay números en el txtCodigo
+            if (txtCodigo.Text != "")
+            {
+                //comprueba la existencia del código con el método ExisteCodigo
+                if (ExisteCodigo(int.Parse(txtCodigo.Text)))
+                {
+                    MessageBox.Show("El código ya esta ingresado para otro producto");
+                    txtCodigo.Text = "";
+                }
             }
         }
     }
