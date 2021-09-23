@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d88c9082e7454e2a96923dd82b839ef6" Name="Diagram1">
+        <EntityTypeShape EntityType="ventasdbModel.Categoria" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.Cliente" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.DetalleCompra" Width="1.5" PointX="10.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.DetalleVenta" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.Local" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.Marca" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.OrdenCompra" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.Producto" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.ProductoLocal" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.Rol" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.User" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ventasdbModel.Venta" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <AssociationConnector Association="ventasdbModel.FK_Producto_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_Venta_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_DetalleCompra_OrdenCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_DetalleCompra_ProductoLocal" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_DetalleVenta_ProductoLocal" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_DetalleVenta_Venta" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_ProductoLocal_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_Producto_Marca1" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_ProductoLocal_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_User_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="ventasdbModel.FK_Venta_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
