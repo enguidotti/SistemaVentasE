@@ -16,6 +16,7 @@ namespace SistemaVentasE.Forms
     {
         private ventasdbEntities db = new ventasdbEntities();
         private int idProducto = 0;
+        Helpers h = new Helpers();
         public FormProducto()
         {
             InitializeComponent();
@@ -233,6 +234,11 @@ namespace SistemaVentasE.Forms
                     txtCodigo.Text = "";
                 }
             }
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            h.soloNumeros(e);
         }
     }
 }
