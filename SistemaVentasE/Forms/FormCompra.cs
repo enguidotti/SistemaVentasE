@@ -118,6 +118,9 @@ namespace SistemaVentasE.Forms
             fila.Cells[5].Value = idProducto;
             //agrega la fila a grilla
             dgvDetalle.Rows.Add(fila);
+
+            int total = int.Parse(txtCantidad.Text) * int.Parse(txtPrecio.Text);
+            txtTotal.Text = (int.Parse(txtTotal.Text) + total).ToString();
         }
         //método para verificar y actualizar los datos
         private string verificaExistenciaGrilla()
@@ -135,9 +138,15 @@ namespace SistemaVentasE.Forms
                     //si presiona Si
                     if(resp == DialogResult.Yes)
                     {
+                        //actualización del campo txtTotal
+                        //captura el total de la celda preciototal y se asigna a una variable
+                        int totalV = int.Parse(fila.Cells[4].Value.ToString());
+                        int total = int.Parse(txtCantidad.Text) * int.Parse(txtPrecio.Text);
+                        txtTotal.Text = (int.Parse(txtTotal.Text) - totalV + total).ToString();
+                        //actualizar la grilla con los nuevos valores
                         fila.Cells[2].Value = txtCantidad.Text;
                         fila.Cells[3].Value = txtPrecio.Text;
-                        fila.Cells[4].Value = int.Parse(txtCantidad.Text) * int.Parse(txtPrecio.Text);                        
+                        fila.Cells[4].Value = int.Parse(txtCantidad.Text) * int.Parse(txtPrecio.Text);
                     }
                     mensaje = "Existe producto";
                     return mensaje; 
@@ -176,6 +185,84 @@ namespace SistemaVentasE.Forms
             //crear instancia del formulario de producto
             FormProducto producto = new FormProducto();
             producto.Show();//abre la ventana de productos
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string error = "";
+            if (string.IsNullOrEmpty(cbLocal.Text))
+            {
+                error = "Debe escoger el local de ingreso \n";
+            }
+            if (string.IsNullOrEmpty(txtFactura.Text))
+            {
+                error += "Debe ingresar número de factura \n";
+            }
+            if(dgvDetalle.Rows.Count == 0)
+            {
+                error += "Debe ingresar al menos un producto";
+            }
+            if(error != "")
+            {
+                MessageBox.Show(error, "Validación",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            else
+            {
+                //guardar en tabla orden de compra
+                OrdenCompra orden = new OrdenCompra();//instanciando la clase para acceder a sus métodos y atributos através del objeto orden
+                //asignar los valores a los atributos de la clase
+                orden.num_factura = int.Parse(txtFactura.Text);
+                orden.fecha = dtFecha.Value;
+                orden.id_user = 1;//cambiará a variable session, en un par de clases
+                db.OrdenCompra.Add(orden);
+                db.SaveChanges();
+                //una vez que guarda el registro, capturamos el valor autogenerado y lo asignamos a una variable entera
+                int idOrdenCompra = orden.id_compra;
+
+                //guardar en detalle compra
+                DetalleCompra detalle = new DetalleCompra();
+                //recorrer la grilla para asignar los productos a la clase DetalleCompra
+                foreach (DataGridViewRow fila in dgvDetalle.Rows)
+                {
+                    int idProducto = int.Parse(fila.Cells[5].Value.ToString());
+                    int idLocal = int.Parse(cbLocal.SelectedValue.ToString());
+                    int cantidad = int.Parse(fila.Cells[2].Value.ToString());
+                    //verifica si el producto existe en el local
+                    int idStock = VerificarStock(idProducto,idLocal, cantidad);
+                    detalle.id_stock = idStock;//hay que cambiarlo
+                    detalle.cantidad = cantidad;
+                    detalle.precio_compra = int.Parse(fila.Cells[3].Value.ToString());
+                    detalle.id_compra = idOrdenCompra;
+                    //guarda los cambios en la table detallecompra
+                    db.DetalleCompra.Add(detalle);
+                    db.SaveChanges();
+                }
+            }
+        }
+        //método para verificar existencia del producto en local
+        private int VerificarStock(int idProducto, int idLocal, int cantidad)
+        {
+            var stock = db.ProductoLocal.FirstOrDefault(p => p.id_producto == idProducto && p.id_local == idLocal);
+            //si no existe el producto en el local, crea el registro
+            if(stock == null)
+            {
+                ProductoLocal producto = new ProductoLocal();
+                producto.cantidad = cantidad;
+                producto.id_producto = idProducto;
+                producto.id_local = idLocal;
+                db.ProductoLocal.Add(producto);
+                db.SaveChanges();
+                //retorno el id_stock recién creado
+                return producto.id_stock;
+            }
+            else
+            {
+                //actualiza el stock 
+                stock.cantidad = stock.cantidad + cantidad;
+                db.SaveChanges();
+                //retorno el id del producto en el local
+                return stock.id_stock;
+            }
         }
     }
 }
