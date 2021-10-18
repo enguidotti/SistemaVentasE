@@ -60,5 +60,10 @@ namespace SistemaVentasE
         {
             AbrirFormHijo(new Forms.FormMarca());
         }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            AbrirFormHijo(new Forms.FormUsuario());
+        }
     }
 }

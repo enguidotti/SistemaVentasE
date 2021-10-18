@@ -30,15 +30,16 @@ namespace SistemaVentasE
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelTopMenu = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelTop = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
             this.btnMarca = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
             this.btnOrden = new System.Windows.Forms.Button();
+            this.panelTopMenu = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.panelContent = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelTopMenu.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -47,6 +48,7 @@ namespace SistemaVentasE
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.btnUser);
             this.panelMenu.Controls.Add(this.btnMarca);
             this.panelMenu.Controls.Add(this.btnProducto);
             this.panelMenu.Controls.Add(this.btnOrden);
@@ -57,71 +59,22 @@ namespace SistemaVentasE
             this.panelMenu.Size = new System.Drawing.Size(220, 521);
             this.panelMenu.TabIndex = 0;
             // 
-            // panelTopMenu
+            // btnUser
             // 
-            this.panelTopMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(60)))));
-            this.panelTopMenu.Controls.Add(this.label1);
-            this.panelTopMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelTopMenu.Name = "panelTopMenu";
-            this.panelTopMenu.Size = new System.Drawing.Size(220, 100);
-            this.panelTopMenu.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(35, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "S. Ventas";
-            // 
-            // panelTop
-            // 
-            this.panelTop.BackColor = System.Drawing.Color.Orange;
-            this.panelTop.Controls.Add(this.btnCerrar);
-            this.panelTop.Controls.Add(this.lblTitulo);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(220, 0);
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(841, 100);
-            this.panelTop.TabIndex = 1;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(242, 31);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(352, 37);
-            this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Bienvenido al Sistema";
-            // 
-            // panelContent
-            // 
-            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(220, 100);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(841, 421);
-            this.panelContent.TabIndex = 2;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCerrar.FlatAppearance.BorderSize = 0;
-            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.ForeColor = System.Drawing.Color.White;
-            this.btnCerrar.Location = new System.Drawing.Point(766, 0);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 100);
-            this.btnCerrar.TabIndex = 0;
-            this.btnCerrar.Text = "X";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUser.FlatAppearance.BorderSize = 0;
+            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.ForeColor = System.Drawing.Color.White;
+            this.btnUser.Image = global::SistemaVentasE.Properties.Resources.marca;
+            this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUser.Location = new System.Drawing.Point(0, 280);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(220, 60);
+            this.btnUser.TabIndex = 5;
+            this.btnUser.Text = "Usuario";
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
             // btnMarca
             // 
@@ -174,6 +127,72 @@ namespace SistemaVentasE
             this.btnOrden.UseVisualStyleBackColor = true;
             this.btnOrden.Click += new System.EventHandler(this.btnOrden_Click);
             // 
+            // panelTopMenu
+            // 
+            this.panelTopMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(60)))));
+            this.panelTopMenu.Controls.Add(this.label1);
+            this.panelTopMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTopMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelTopMenu.Name = "panelTopMenu";
+            this.panelTopMenu.Size = new System.Drawing.Size(220, 100);
+            this.panelTopMenu.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(35, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 31);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "S. Ventas";
+            // 
+            // panelTop
+            // 
+            this.panelTop.BackColor = System.Drawing.Color.Orange;
+            this.panelTop.Controls.Add(this.btnCerrar);
+            this.panelTop.Controls.Add(this.lblTitulo);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(220, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(841, 100);
+            this.panelTop.TabIndex = 1;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCerrar.FlatAppearance.BorderSize = 0;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(766, 0);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 100);
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.Text = "X";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(242, 31);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(352, 37);
+            this.lblTitulo.TabIndex = 1;
+            this.lblTitulo.Text = "Bienvenido al Sistema";
+            // 
+            // panelContent
+            // 
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(220, 100);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(841, 421);
+            this.panelContent.TabIndex = 2;
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +225,7 @@ namespace SistemaVentasE
         private System.Windows.Forms.Button btnProducto;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnMarca;
+        private System.Windows.Forms.Button btnUser;
     }
 }
 
