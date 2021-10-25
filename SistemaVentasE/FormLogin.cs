@@ -18,6 +18,8 @@ namespace SistemaVentasE
         public FormLogin()
         {
             InitializeComponent();
+            txtEmail.Text = "admin@mail.com";
+            txtPass.Text = "admin";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

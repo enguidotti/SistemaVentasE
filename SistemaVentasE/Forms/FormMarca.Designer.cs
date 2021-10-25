@@ -29,7 +29,7 @@ namespace SistemaVentasE.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSubtitulo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -38,15 +38,15 @@ namespace SistemaVentasE.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarca)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblSubtitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(282, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Gestinar Marcas";
+            this.lblSubtitulo.AutoSize = true;
+            this.lblSubtitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtitulo.Location = new System.Drawing.Point(282, 42);
+            this.lblSubtitulo.Name = "lblSubtitulo";
+            this.lblSubtitulo.Size = new System.Drawing.Size(228, 31);
+            this.lblSubtitulo.TabIndex = 0;
+            this.lblSubtitulo.Text = "Gestinar Marcas";
             // 
             // label2
             // 
@@ -68,6 +68,7 @@ namespace SistemaVentasE.Forms
             // 
             // btnGuardar
             // 
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(536, 109);
             this.btnGuardar.Name = "btnGuardar";
@@ -89,6 +90,7 @@ namespace SistemaVentasE.Forms
             // btnEliminar
             // 
             this.btnEliminar.Enabled = false;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(632, 109);
             this.btnEliminar.Name = "btnEliminar";
@@ -108,9 +110,10 @@ namespace SistemaVentasE.Forms
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSubtitulo);
             this.Name = "FormMarca";
             this.Text = "FormMarca";
+            this.Load += new System.EventHandler(this.FormMarca_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -119,7 +122,7 @@ namespace SistemaVentasE.Forms
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Button btnGuardar;

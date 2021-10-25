@@ -102,5 +102,26 @@ namespace SistemaVentasE.Forms
                 }
             }
         }
+        private void CargarColores()
+        {
+            foreach (Control btn in Controls)
+            {
+                if (btn.GetType() == typeof(Button))
+                {
+                    btn.BackColor = TemasColor.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                }
+            }
+            lblSubtitulo.ForeColor = TemasColor.SecondaryColor;
+            dgvUsuario.ColumnHeadersDefaultCellStyle.BackColor = TemasColor.PrimaryColor;
+            dgvUsuario.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvUsuario.EnableHeadersVisualStyles = false;
+
+            dgvUsuario.Font = new Font("Arial", 14);
+        }
+        private void FormUsuario_Load(object sender, EventArgs e)
+        {
+            CargarColores();
+        }
     }
 }

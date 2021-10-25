@@ -207,6 +207,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\group.png" />
     <None Include="Resources\group1.png" />
     <None Include="Resources\login.png" />
     <None Include="Resources\marca.png" />

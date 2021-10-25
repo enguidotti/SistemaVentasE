@@ -45,7 +45,7 @@ namespace SistemaVentasE.Forms
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSubtitulo = new System.Windows.Forms.Label();
             this.txtRun = new System.Windows.Forms.TextBox();
             this.txtRePass = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuario)).BeginInit();
@@ -53,6 +53,7 @@ namespace SistemaVentasE.Forms
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Location = new System.Drawing.Point(478, 192);
             this.btnLimpiar.Name = "btnLimpiar";
@@ -176,6 +177,7 @@ namespace SistemaVentasE.Forms
             // btnEliminar
             // 
             this.btnEliminar.Enabled = false;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(478, 147);
             this.btnEliminar.Name = "btnEliminar";
@@ -186,6 +188,7 @@ namespace SistemaVentasE.Forms
             // 
             // btnGuardar
             // 
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(478, 102);
             this.btnGuardar.Name = "btnGuardar";
@@ -205,15 +208,15 @@ namespace SistemaVentasE.Forms
             this.label2.TabIndex = 28;
             this.label2.Text = "Tipo Usuario";
             // 
-            // label1
+            // lblSubtitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(401, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 31);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Gestinar Usuarios";
+            this.lblSubtitulo.AutoSize = true;
+            this.lblSubtitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtitulo.Location = new System.Drawing.Point(401, 20);
+            this.lblSubtitulo.Name = "lblSubtitulo";
+            this.lblSubtitulo.Size = new System.Drawing.Size(249, 31);
+            this.lblSubtitulo.TabIndex = 27;
+            this.lblSubtitulo.Text = "Gestinar Usuarios";
             // 
             // txtRun
             // 
@@ -258,9 +261,10 @@ namespace SistemaVentasE.Forms
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSubtitulo);
             this.Name = "FormUsuario";
             this.Text = "FormUsuario";
+            this.Load += new System.EventHandler(this.FormUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -285,7 +289,7 @@ namespace SistemaVentasE.Forms
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.TextBox txtRun;
         private System.Windows.Forms.TextBox txtRePass;
     }

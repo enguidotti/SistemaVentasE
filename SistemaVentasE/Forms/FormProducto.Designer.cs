@@ -32,7 +32,7 @@ namespace SistemaVentasE.Forms
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSubtitulo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,6 +54,7 @@ namespace SistemaVentasE.Forms
             // btnEliminar
             // 
             this.btnEliminar.Enabled = false;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(479, 157);
             this.btnEliminar.Name = "btnEliminar";
@@ -65,6 +66,7 @@ namespace SistemaVentasE.Forms
             // 
             // btnGuardar
             // 
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(479, 112);
             this.btnGuardar.Name = "btnGuardar";
@@ -84,15 +86,15 @@ namespace SistemaVentasE.Forms
             this.label2.TabIndex = 7;
             this.label2.Text = "Marca";
             // 
-            // label1
+            // lblSubtitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(402, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(265, 31);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Gestinar Productos";
+            this.lblSubtitulo.AutoSize = true;
+            this.lblSubtitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtitulo.Location = new System.Drawing.Point(402, 30);
+            this.lblSubtitulo.Name = "lblSubtitulo";
+            this.lblSubtitulo.Size = new System.Drawing.Size(265, 31);
+            this.lblSubtitulo.TabIndex = 6;
+            this.lblSubtitulo.Text = "Gestinar Productos";
             // 
             // label3
             // 
@@ -227,6 +229,7 @@ namespace SistemaVentasE.Forms
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Location = new System.Drawing.Point(479, 202);
             this.btnLimpiar.Name = "btnLimpiar";
@@ -259,9 +262,10 @@ namespace SistemaVentasE.Forms
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSubtitulo);
             this.Name = "FormProducto";
             this.Text = "FormProducto";
+            this.Load += new System.EventHandler(this.FormProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,7 +277,7 @@ namespace SistemaVentasE.Forms
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label4;

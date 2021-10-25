@@ -264,5 +264,26 @@ namespace SistemaVentasE.Forms
                 return stock.id_stock;
             }
         }
+        private void CargarColores()
+        {
+            foreach (Control btn in Controls)
+            {
+                if (btn.GetType() == typeof(Button))
+                {
+                    btn.BackColor = TemasColor.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                }
+            }
+            lblSubtitulo.ForeColor = TemasColor.SecondaryColor;
+            dgvDetalle.ColumnHeadersDefaultCellStyle.BackColor = TemasColor.PrimaryColor;
+            dgvDetalle.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvDetalle.EnableHeadersVisualStyles = false;
+
+            dgvDetalle.Font = new Font("Arial", 14);
+        }
+        private void FormCompra_Load(object sender, EventArgs e)
+        {
+            CargarColores();
+        }
     }
 }

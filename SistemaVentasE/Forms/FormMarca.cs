@@ -21,7 +21,28 @@ namespace SistemaVentasE.Forms
             InitializeComponent();
             cargarGrilla();//cargará los datos en la grilla al comienzo
         }
+        private void CargarColores()
+        {
+            //permite recorrer todos los controles del formulario
+            foreach (Control btn in Controls)
+            {
+                //pregunta si controles son botones
+                if(btn.GetType() == typeof(Button))
+                {
+                    //les cambia el color de fono y el color de la letra
+                    btn.BackColor = TemasColor.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                }
+            }
+            //se cambia el color del titulo del formulario hijo
+            lblSubtitulo.ForeColor = TemasColor.SecondaryColor;
+            //se dan estilos a la grilla
+            dgvMarca.ColumnHeadersDefaultCellStyle.BackColor = TemasColor.PrimaryColor;//cambia el color de fono
+            dgvMarca.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;//cambia el color de las letras
+            dgvMarca.EnableHeadersVisualStyles = false;//nos permite visualizar los estilso asignados
+            dgvMarca.Font = new Font("Arial", 14);//cambia el tipo de letra y su tamaño
 
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (txtMarca.Text.Trim() != "")
@@ -123,19 +144,9 @@ namespace SistemaVentasE.Forms
             }
         }
 
-
-
-
-
-
-        //private void existeMarca(string nombreMarca)
-        //{
-
-        //    //ORM entity framework
-        //    //FirstOrDefault, First, Where => select where
-        //    //select * from marca WHERE nombre = 'Lenovo';
-        //    var q = db.Marca.FirstOrDefault(m => m.nombre.Equals(nombreMarca));
-
-        //}
+        private void FormMarca_Load(object sender, EventArgs e)
+        {
+            CargarColores();
+        }
     }
 }

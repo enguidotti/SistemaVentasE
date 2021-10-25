@@ -86,6 +86,7 @@ namespace SistemaVentasE
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Orange;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(58, 436);
             this.btnLogin.Name = "btnLogin";

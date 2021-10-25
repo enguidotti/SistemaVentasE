@@ -240,5 +240,26 @@ namespace SistemaVentasE.Forms
         {
             h.soloNumeros(e);
         }
+        private void CargarColores()
+        {
+            foreach (Control btn in Controls)
+            {
+                if (btn.GetType() == typeof(Button))
+                {
+                    btn.BackColor = TemasColor.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                }
+            }
+            lblSubtitulo.ForeColor = TemasColor.SecondaryColor;
+
+            dgvProducto.ColumnHeadersDefaultCellStyle.BackColor = TemasColor.PrimaryColor;
+            dgvProducto.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvProducto.EnableHeadersVisualStyles = false;
+            dgvProducto.Font = new Font("Arial", 14);
+        }
+        private void FormProducto_Load(object sender, EventArgs e)
+        {
+            CargarColores();
+        }
     }
 }
