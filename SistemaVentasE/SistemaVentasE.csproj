@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemasColor.cs" />
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,8 +207,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\group1.png" />
     <None Include="Resources\login.png" />
-    <None Include="Resources\group.png" />
     <None Include="Resources\marca.png" />
     <None Include="Resources\producto.png" />
     <None Include="Resources\ordenCompra.png" />

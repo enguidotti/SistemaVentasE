@@ -66,7 +66,7 @@ namespace SistemaVentasE
             this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUser.ForeColor = System.Drawing.Color.White;
-            this.btnUser.Image = global::SistemaVentasE.Properties.Resources.marca;
+            this.btnUser.Image = global::SistemaVentasE.Properties.Resources.group1;
             this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUser.Location = new System.Drawing.Point(0, 280);
             this.btnUser.Name = "btnUser";
