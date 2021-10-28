@@ -118,5 +118,10 @@ namespace SistemaVentasE
         {
             AbrirFormHijo(new Forms.FormUsuario(), sender,"USUARIOS DEL SISTEMA");
         }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            AbrirFormHijo(new Forms.FormReporteUser(), sender, "REPORTES");
+        }
     }
 }

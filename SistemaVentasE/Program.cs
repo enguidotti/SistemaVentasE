@@ -17,7 +17,7 @@ namespace SistemaVentasE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());//se cambie el formulario que se la lanza al comienzo
+            Application.Run(new FormHome());//se cambie el formulario que se la lanza al comienzo
         }
     }
 }
