@@ -30,6 +30,7 @@ namespace SistemaVentasE
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.btnUser = new System.Windows.Forms.Button();
             this.btnMarca = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
@@ -40,7 +41,7 @@ namespace SistemaVentasE
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
-            this.btnReportes = new System.Windows.Forms.Button();
+            this.txtFactura = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelTopMenu.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -49,6 +50,7 @@ namespace SistemaVentasE
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.txtFactura);
             this.panelMenu.Controls.Add(this.btnReportes);
             this.panelMenu.Controls.Add(this.btnUser);
             this.panelMenu.Controls.Add(this.btnMarca);
@@ -60,6 +62,22 @@ namespace SistemaVentasE
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 521);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.White;
+            this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.Location = new System.Drawing.Point(0, 340);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(220, 60);
+            this.btnReportes.TabIndex = 6;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnUser
             // 
@@ -195,21 +213,21 @@ namespace SistemaVentasE
             this.panelContent.Size = new System.Drawing.Size(841, 421);
             this.panelContent.TabIndex = 2;
             // 
-            // btnReportes
+            // txtFactura
             // 
-            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportes.ForeColor = System.Drawing.Color.White;
-            this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(0, 340);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(220, 60);
-            this.btnReportes.TabIndex = 6;
-            this.btnReportes.Text = "Reportes";
-            this.btnReportes.UseVisualStyleBackColor = true;
-            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            this.txtFactura.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtFactura.FlatAppearance.BorderSize = 0;
+            this.txtFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFactura.ForeColor = System.Drawing.Color.White;
+            this.txtFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtFactura.Location = new System.Drawing.Point(0, 400);
+            this.txtFactura.Name = "txtFactura";
+            this.txtFactura.Size = new System.Drawing.Size(220, 60);
+            this.txtFactura.TabIndex = 7;
+            this.txtFactura.Text = "Buscar Factura";
+            this.txtFactura.UseVisualStyleBackColor = true;
+            this.txtFactura.Click += new System.EventHandler(this.txtFactura_Click);
             // 
             // FormHome
             // 
@@ -245,6 +263,7 @@ namespace SistemaVentasE
         private System.Windows.Forms.Button btnMarca;
         private System.Windows.Forms.Button btnUser;
         private System.Windows.Forms.Button btnReportes;
+        private System.Windows.Forms.Button txtFactura;
     }
 }
 

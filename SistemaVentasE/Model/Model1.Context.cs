@@ -27,7 +27,6 @@ namespace SistemaVentasE.Model
     
         public virtual DbSet<Categoria> Categoria { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<DetalleCompra> DetalleCompra { get; set; }
         public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
         public virtual DbSet<Local> Local { get; set; }
         public virtual DbSet<Marca> Marca { get; set; }
@@ -37,5 +36,6 @@ namespace SistemaVentasE.Model
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
+        public virtual DbSet<DetalleCompra> DetalleCompra { get; set; }
     }
 }

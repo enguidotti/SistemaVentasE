@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ventasdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ventasdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categoria">
           <Key>
             <PropertyRef Name="id_categoria" />
@@ -103,6 +103,7 @@
             <PropertyRef Name="id_user" />
           </Key>
           <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="run" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="nombres" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="apellidos" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="150" Nullable="false" />
@@ -164,6 +165,18 @@
             </Principal>
             <Dependent Role="DetalleVenta">
               <PropertyRef Name="id_venta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenCompra_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OrdenCompra" Type="Self.OrdenCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="OrdenCompra">
+              <PropertyRef Name="id_user" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -280,6 +293,10 @@
             <End Role="Venta" EntitySet="Venta" />
             <End Role="DetalleVenta" EntitySet="DetalleVenta" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrdenCompra_User" Association="Self.FK_OrdenCompra_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrdenCompra" EntitySet="OrdenCompra" />
+          </AssociationSet>
           <AssociationSet Name="FK_Producto_Categoria" Association="Self.FK_Producto_Categoria">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Producto" EntitySet="Producto" />
@@ -309,8 +326,7 @@
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ventasdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -334,18 +350,6 @@
           <Property Name="fono" Type="Int32" />
           <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_Cliente" FromRole="Cliente" ToRole="Venta" />
-        </EntityType>
-        <EntityType Name="DetalleCompra">
-          <Key>
-            <PropertyRef Name="id_detalle" />
-          </Key>
-          <Property Name="id_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_stock" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="precio_compra" Type="Int32" Nullable="false" />
-          <Property Name="id_compra" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="OrdenCompra" Relationship="Self.FK_DetalleCompra_OrdenCompra" FromRole="DetalleCompra" ToRole="OrdenCompra" />
-          <NavigationProperty Name="ProductoLocal" Relationship="Self.FK_DetalleCompra_ProductoLocal" FromRole="DetalleCompra" ToRole="ProductoLocal" />
         </EntityType>
         <EntityType Name="DetalleVenta">
           <Key>
@@ -385,7 +389,8 @@
           <Property Name="num_factura" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_user" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DetalleCompra" Relationship="Self.FK_DetalleCompra_OrdenCompra" FromRole="OrdenCompra" ToRole="DetalleCompra" />
+          <NavigationProperty Name="DetalleCompra" Relationship="ventasdbModel.FK_DetalleCompra_OrdenCompra" FromRole="OrdenCompra" ToRole="DetalleCompra" />
+          <NavigationProperty Name="User" Relationship="ventasdbModel.FK_OrdenCompra_User" FromRole="OrdenCompra" ToRole="User" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -411,10 +416,10 @@
           <Property Name="cantidad" Type="Int32" Nullable="false" />
           <Property Name="id_producto" Type="Int32" Nullable="false" />
           <Property Name="id_local" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DetalleCompra" Relationship="Self.FK_DetalleCompra_ProductoLocal" FromRole="ProductoLocal" ToRole="DetalleCompra" />
           <NavigationProperty Name="DetalleVenta" Relationship="Self.FK_DetalleVenta_ProductoLocal" FromRole="ProductoLocal" ToRole="DetalleVenta" />
           <NavigationProperty Name="Local" Relationship="Self.FK_ProductoLocal_Local" FromRole="ProductoLocal" ToRole="Local" />
           <NavigationProperty Name="Producto" Relationship="Self.FK_ProductoLocal_Producto" FromRole="ProductoLocal" ToRole="Producto" />
+          <NavigationProperty Name="DetalleCompra" Relationship="ventasdbModel.FK_DetalleCompra_ProductoLocal" FromRole="ProductoLocal" ToRole="DetalleCompra" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -436,6 +441,8 @@
           <Property Name="id_rol" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Rol" Relationship="Self.FK_User_Rol" FromRole="User" ToRole="Rol" />
           <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_User" FromRole="User" ToRole="Venta" />
+          <Property Name="run" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrdenCompra" Relationship="ventasdbModel.FK_OrdenCompra_User" FromRole="User" ToRole="OrdenCompra" />
         </EntityType>
         <EntityType Name="Venta">
           <Key>
@@ -471,30 +478,6 @@
             </Principal>
             <Dependent Role="Venta">
               <PropertyRef Name="id_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DetalleCompra_OrdenCompra">
-          <End Role="OrdenCompra" Type="Self.OrdenCompra" Multiplicity="1" />
-          <End Role="DetalleCompra" Type="Self.DetalleCompra" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrdenCompra">
-              <PropertyRef Name="id_compra" />
-            </Principal>
-            <Dependent Role="DetalleCompra">
-              <PropertyRef Name="id_compra" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DetalleCompra_ProductoLocal">
-          <End Role="ProductoLocal" Type="Self.ProductoLocal" Multiplicity="1" />
-          <End Role="DetalleCompra" Type="Self.DetalleCompra" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductoLocal">
-              <PropertyRef Name="id_stock" />
-            </Principal>
-            <Dependent Role="DetalleCompra">
-              <PropertyRef Name="id_stock" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -585,7 +568,6 @@
         <EntityContainer Name="ventasdbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categoria" EntityType="Self.Categoria" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
-          <EntitySet Name="DetalleCompra" EntityType="Self.DetalleCompra" />
           <EntitySet Name="DetalleVenta" EntityType="Self.DetalleVenta" />
           <EntitySet Name="Local" EntityType="Self.Local" />
           <EntitySet Name="Marca" EntityType="Self.Marca" />
@@ -602,14 +584,6 @@
           <AssociationSet Name="FK_Venta_Cliente" Association="Self.FK_Venta_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Venta" EntitySet="Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DetalleCompra_OrdenCompra" Association="Self.FK_DetalleCompra_OrdenCompra">
-            <End Role="OrdenCompra" EntitySet="OrdenCompra" />
-            <End Role="DetalleCompra" EntitySet="DetalleCompra" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DetalleCompra_ProductoLocal" Association="Self.FK_DetalleCompra_ProductoLocal">
-            <End Role="ProductoLocal" EntitySet="ProductoLocal" />
-            <End Role="DetalleCompra" EntitySet="DetalleCompra" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleVenta_ProductoLocal" Association="Self.FK_DetalleVenta_ProductoLocal">
             <End Role="ProductoLocal" EntitySet="ProductoLocal" />
@@ -639,7 +613,68 @@
             <End Role="User" EntitySet="User" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
+          <EntitySet Name="DetalleCompra" EntityType="ventasdbModel.DetalleCompra" />
+          <AssociationSet Name="FK_DetalleCompra_OrdenCompra" Association="ventasdbModel.FK_DetalleCompra_OrdenCompra">
+            <End Role="OrdenCompra" EntitySet="OrdenCompra" />
+            <End Role="DetalleCompra" EntitySet="DetalleCompra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleCompra_ProductoLocal" Association="ventasdbModel.FK_DetalleCompra_ProductoLocal">
+            <End Role="ProductoLocal" EntitySet="ProductoLocal" />
+            <End Role="DetalleCompra" EntitySet="DetalleCompra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenCompra_User" Association="ventasdbModel.FK_OrdenCompra_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrdenCompra" EntitySet="OrdenCompra" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="DetalleCompra">
+          <Key>
+            <PropertyRef Name="id_detalle" />
+          </Key>
+          <Property Name="id_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_stock" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="precio_compra" Type="Int32" Nullable="false" />
+          <Property Name="id_compra" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrdenCompra" Relationship="ventasdbModel.FK_DetalleCompra_OrdenCompra" FromRole="DetalleCompra" ToRole="OrdenCompra" />
+          <NavigationProperty Name="ProductoLocal" Relationship="ventasdbModel.FK_DetalleCompra_ProductoLocal" FromRole="DetalleCompra" ToRole="ProductoLocal" />
+        </EntityType>
+        <Association Name="FK_DetalleCompra_OrdenCompra">
+          <End Type="ventasdbModel.OrdenCompra" Role="OrdenCompra" Multiplicity="1" />
+          <End Type="ventasdbModel.DetalleCompra" Role="DetalleCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenCompra">
+              <PropertyRef Name="id_compra" />
+            </Principal>
+            <Dependent Role="DetalleCompra">
+              <PropertyRef Name="id_compra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleCompra_ProductoLocal">
+          <End Type="ventasdbModel.ProductoLocal" Role="ProductoLocal" Multiplicity="1" />
+          <End Type="ventasdbModel.DetalleCompra" Role="DetalleCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoLocal">
+              <PropertyRef Name="id_stock" />
+            </Principal>
+            <Dependent Role="DetalleCompra">
+              <PropertyRef Name="id_stock" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenCompra_User">
+          <End Type="ventasdbModel.User" Role="User" Multiplicity="1" />
+          <End Type="ventasdbModel.OrdenCompra" Role="OrdenCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="OrdenCompra">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -664,17 +699,6 @@
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
                 <ScalarProperty Name="fono" ColumnName="fono" />
                 <ScalarProperty Name="email" ColumnName="email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DetalleCompra">
-            <EntityTypeMapping TypeName="ventasdbModel.DetalleCompra">
-              <MappingFragment StoreEntitySet="DetalleCompra">
-                <ScalarProperty Name="id_detalle" ColumnName="id_detalle" />
-                <ScalarProperty Name="id_stock" ColumnName="id_stock" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="precio_compra" ColumnName="precio_compra" />
-                <ScalarProperty Name="id_compra" ColumnName="id_compra" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -752,6 +776,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="ventasdbModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="run" ColumnName="run" />
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="nombres" ColumnName="nombres" />
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
@@ -769,6 +794,17 @@
                 <ScalarProperty Name="total" ColumnName="total" />
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleCompra">
+            <EntityTypeMapping TypeName="ventasdbModel.DetalleCompra">
+              <MappingFragment StoreEntitySet="DetalleCompra">
+                <ScalarProperty Name="id_compra" ColumnName="id_compra" />
+                <ScalarProperty Name="precio_compra" ColumnName="precio_compra" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+                <ScalarProperty Name="id_detalle" ColumnName="id_detalle" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,7 +7,6 @@
       <Diagram DiagramId="d88c9082e7454e2a96923dd82b839ef6" Name="Diagram1">
         <EntityTypeShape EntityType="ventasdbModel.Categoria" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ventasdbModel.Cliente" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ventasdbModel.DetalleCompra" Width="1.5" PointX="10.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ventasdbModel.DetalleVenta" Width="1.5" PointX="8.125" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ventasdbModel.Local" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ventasdbModel.Marca" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
@@ -19,8 +18,6 @@
         <EntityTypeShape EntityType="ventasdbModel.Venta" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
         <AssociationConnector Association="ventasdbModel.FK_Producto_Categoria" ManuallyRouted="false" />
         <AssociationConnector Association="ventasdbModel.FK_Venta_Cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="ventasdbModel.FK_DetalleCompra_OrdenCompra" ManuallyRouted="false" />
-        <AssociationConnector Association="ventasdbModel.FK_DetalleCompra_ProductoLocal" ManuallyRouted="false" />
         <AssociationConnector Association="ventasdbModel.FK_DetalleVenta_ProductoLocal" ManuallyRouted="false" />
         <AssociationConnector Association="ventasdbModel.FK_DetalleVenta_Venta" ManuallyRouted="false" />
         <AssociationConnector Association="ventasdbModel.FK_ProductoLocal_Local" ManuallyRouted="false" />
@@ -28,6 +25,10 @@
         <AssociationConnector Association="ventasdbModel.FK_ProductoLocal_Producto" ManuallyRouted="false" />
         <AssociationConnector Association="ventasdbModel.FK_User_Rol" ManuallyRouted="false" />
         <AssociationConnector Association="ventasdbModel.FK_Venta_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ventasdbModel.DetalleCompra" Width="1.5" PointX="10.5" PointY="2.5" />
+        <AssociationConnector Association="ventasdbModel.FK_DetalleCompra_OrdenCompra" />
+        <AssociationConnector Association="ventasdbModel.FK_DetalleCompra_ProductoLocal" />
+        <AssociationConnector Association="ventasdbModel.FK_OrdenCompra_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

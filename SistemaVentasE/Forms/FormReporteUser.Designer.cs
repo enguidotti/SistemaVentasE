@@ -37,7 +37,10 @@ namespace SistemaVentasE.Forms
             this.btnBuscar = new System.Windows.Forms.Button();
             this.rvUser = new Microsoft.Reporting.WinForms.ReportViewer();
             this.UserBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.reporteMarcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSubtitulo
@@ -95,10 +98,28 @@ namespace SistemaVentasE.Forms
             this.rvUser.ServerReport.BearerToken = null;
             this.rvUser.Size = new System.Drawing.Size(670, 246);
             this.rvUser.TabIndex = 36;
+            this.rvUser.Visible = false;
             // 
             // UserBindingSource
             // 
             this.UserBindingSource.DataSource = typeof(SistemaVentasE.Model.User);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteMarcaToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 37;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // reporteMarcaToolStripMenuItem
+            // 
+            this.reporteMarcaToolStripMenuItem.Name = "reporteMarcaToolStripMenuItem";
+            this.reporteMarcaToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.reporteMarcaToolStripMenuItem.Text = "Reporte marca";
+            this.reporteMarcaToolStripMenuItem.Click += new System.EventHandler(this.reporteMarcaToolStripMenuItem_Click);
             // 
             // FormReporteUser
             // 
@@ -110,10 +131,14 @@ namespace SistemaVentasE.Forms
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblSubtitulo);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormReporteUser";
             this.Text = "FormReporteUser";
             this.Load += new System.EventHandler(this.FormReporteUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +152,7 @@ namespace SistemaVentasE.Forms
         private System.Windows.Forms.Button btnBuscar;
         private Microsoft.Reporting.WinForms.ReportViewer rvUser;
         private System.Windows.Forms.BindingSource UserBindingSource;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem reporteMarcaToolStripMenuItem;
     }
 }

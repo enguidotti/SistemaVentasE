@@ -18,6 +18,7 @@ namespace SistemaVentasE.Model
         public User()
         {
             this.Venta = new HashSet<Venta>();
+            this.OrdenCompra = new HashSet<OrdenCompra>();
         }
     
         public int id_user { get; set; }
@@ -26,9 +27,12 @@ namespace SistemaVentasE.Model
         public string email { get; set; }
         public string password { get; set; }
         public int id_rol { get; set; }
+        public string run { get; set; }
     
         public virtual Rol Rol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta> Venta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrdenCompra> OrdenCompra { get; set; }
     }
 }

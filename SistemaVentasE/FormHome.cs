@@ -123,5 +123,10 @@ namespace SistemaVentasE
         {
             AbrirFormHijo(new Forms.FormReporteUser(), sender, "REPORTES");
         }
+
+        private void txtFactura_Click(object sender, EventArgs e)
+        {
+            AbrirFormHijo(new Forms.FormReporteOrden(), sender, "BUSCAR FACTURA");
+        }
     }
 }

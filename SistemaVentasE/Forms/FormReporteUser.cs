@@ -31,12 +31,23 @@ namespace SistemaVentasE.Forms
                                 u.email,
                                 u.password,
                                 u.nombres,
-                                u.apellidos
+                                u.apellidos,
+                                Rol = u.Rol.nombre
                                }).ToList();
-                ReportDataSource report = new ReportDataSource("Usuario",listaUsuario);
-                rvUser.LocalReport.DataSources.Clear();
-                rvUser.LocalReport.DataSources.Add(report);
-                rvUser.RefreshReport();
+                if (listaUsuario.Count > 0)
+                {
+
+                    ReportDataSource report = new ReportDataSource("Usuario", listaUsuario);
+                    rvUser.LocalReport.DataSources.Clear();
+                    rvUser.LocalReport.DataSources.Add(report);
+                    rvUser.RefreshReport();
+
+                    rvUser.Visible = true;
+                }
+                else
+                {
+                    rvUser.Visible = false;
+                }
 
             }
         }
@@ -48,6 +59,12 @@ namespace SistemaVentasE.Forms
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarUsuario(txtEmail.Text.Trim());
+        }
+
+        private void reporteMarcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReporteMarca marca = new FormReporteMarca();
+            marca.Show();
         }
     }
 }

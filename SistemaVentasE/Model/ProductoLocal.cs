@@ -17,8 +17,8 @@ namespace SistemaVentasE.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProductoLocal()
         {
-            this.DetalleCompra = new HashSet<DetalleCompra>();
             this.DetalleVenta = new HashSet<DetalleVenta>();
+            this.DetalleCompra = new HashSet<DetalleCompra>();
         }
     
         public int id_stock { get; set; }
@@ -27,10 +27,10 @@ namespace SistemaVentasE.Model
         public int id_local { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleCompra> DetalleCompra { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
         public virtual Local Local { get; set; }
         public virtual Producto Producto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetalleCompra> DetalleCompra { get; set; }
     }
 }
