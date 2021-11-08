@@ -213,7 +213,8 @@ namespace SistemaVentasE.Forms
                 //asignar los valores a los atributos de la clase
                 orden.num_factura = int.Parse(txtFactura.Text);
                 orden.fecha = dtFecha.Value;
-                orden.id_user = 1;//cambiará a variable session, en un par de clases
+                //accede a la variable static una vez logeado
+                orden.id_user = FormLogin.idUser;
                 db.OrdenCompra.Add(orden);
                 db.SaveChanges();
                 //una vez que guarda el registro, capturamos el valor autogenerado y lo asignamos a una variable entera

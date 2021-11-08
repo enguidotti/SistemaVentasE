@@ -54,6 +54,7 @@ namespace SistemaVentasE
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(244, 29);
             this.txtEmail.TabIndex = 1;
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // txtPass
             // 

@@ -15,11 +15,13 @@ namespace SistemaVentasE
     {
         private ventasdbEntities db = new ventasdbEntities();
         private Helpers help = new Helpers();
+        //variables que guardan los datos de los usuarios y podrán ser accedidas desde otros formularios
+        public static int idUser;
+        public static string nombreUser;
+        public static int rolUser;
         public FormLogin()
         {
             InitializeComponent();
-            txtEmail.Text = "admin@mail.com";
-            txtPass.Text = "admin";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -39,6 +41,11 @@ namespace SistemaVentasE
                     u.password == txtPass.Text.Trim());
                 if(user != null)
                 {
+                    //se asigna los valores a las variables static
+                    idUser = user.id_user;
+                    nombreUser = user.nombres + " " + user.apellidos;
+                    rolUser = user.id_rol;
+                    //cambiando de formulario 
                     this.Hide();
                     FormHome form = new FormHome();
                     form.Show();
@@ -46,6 +53,18 @@ namespace SistemaVentasE
                 else
                 {
                     MessageBox.Show("Las datos ingresados son incorrectos");
+                }
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if(txtEmail.Text.Trim() != "")
+            {
+                if (!help.emailValido(txtEmail.Text.Trim()))
+                {
+                    MessageBox.Show("El email no tiene el formato correcto");
+                    txtEmail.Focus();
                 }
             }
         }

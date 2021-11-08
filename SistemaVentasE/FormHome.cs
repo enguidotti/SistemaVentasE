@@ -19,6 +19,13 @@ namespace SistemaVentasE
         {
             InitializeComponent();
             rnd = new Random();//se inicializa random
+            lblTitulo.Text = "Bienvenido " + FormLogin.nombreUser;
+            if(FormLogin.rolUser == 2)
+            {
+                btnProducto.Visible = false;
+                btnMarca.Visible = false;
+                btnUser.Visible = false;
+            }
         }
         private Color SeleccionColores()
         {
@@ -74,6 +81,8 @@ namespace SistemaVentasE
                 }
 
                 BotonActivo(btnSender);
+                //cambiar titulo al panel top
+                lblTitulo.Text = titulo;
                 formActivo = formHijo;
                 //determina si el formulario debe abrirse como ventana
                 formHijo.TopLevel = false;
@@ -84,8 +93,6 @@ namespace SistemaVentasE
                 //añadir al panel el formulario hijo
                 panelContent.Controls.Add(formHijo);
                 panelContent.Tag = formHijo;
-                //cambiar titulo al panel top
-                lblTitulo.Text = titulo;
                 formHijo.BringToFront();
                 formHijo.Show();
             }
@@ -105,7 +112,7 @@ namespace SistemaVentasE
             if (formActivo != null)
             {
                 formActivo.Close();
-                lblTitulo.Text = "Bienvenidos al Sistema";
+                lblTitulo.Text = "Bienvenido " + FormLogin.nombreUser;
             }
         }
 
